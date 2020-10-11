@@ -1,0 +1,39 @@
+weather:
+  pull:
+    cron: 0 0 * * * ?
+  round:
+    toUnit: HOURS
+  cache:
+    expire:
+      in: 72
+      timeUnit: HOURS
+  open-weather:
+    api/mp-rest/url: https://api.openweathermap.org/data
+    api/mp-rest/scope: javax.inject.Singleton
+
+quarkus:
+  application:
+    name: airq-weather-cache
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    jdbc:
+      url: jdbc:postgresql://10.1.1.50:5432/warehouse
+    reactive:
+      url: postgresql://10.1.1.50:5432/warehouse
+  vertx:
+    prefer-native-transport: true
+
+"%dev":
+  weather:
+    pull:
+      cron: 0 0 * * * ?
+    round:
+      toUnit: HOURS
+    cache:
+      expire:
+        in: 1
+        timeUnit: HOURS
+  quarkus:
+    redis:
+      hosts: localhost:6379
