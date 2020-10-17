@@ -1,4 +1,4 @@
-package pl.airq.weather.route.dto;
+package pl.airq.weather.rest.dto;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import pl.airq.weather.domain.WeatherInfo;

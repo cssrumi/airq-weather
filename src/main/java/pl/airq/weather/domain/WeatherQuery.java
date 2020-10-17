@@ -10,7 +10,7 @@ import pl.airq.common.domain.exception.ResourceNotFoundException;
 import pl.airq.common.store.Store;
 import pl.airq.common.store.key.TLKey;
 import pl.airq.common.vo.StationLocation;
-import pl.airq.weather.route.dto.WeatherInfoRequest;
+import pl.airq.weather.rest.dto.WeatherInfoRequest;
 
 @ApplicationScoped
 public class WeatherQuery {
