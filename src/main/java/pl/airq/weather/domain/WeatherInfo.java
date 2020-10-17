@@ -44,7 +44,7 @@ public class WeatherInfo {
     @Override
     public String toString() {
         return "WeatherInfo{" +
-                "temperature=" + temperature +
+                ", temperature=" + temperature +
                 ", wind=" + wind +
                 ", windDirection=" + windDirection +
                 ", humidity=" + humidity +

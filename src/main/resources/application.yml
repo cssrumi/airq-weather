@@ -3,11 +3,14 @@ weather:
     cron: 0 0 * * * ?
   round:
     toUnit: HOURS
-  cache:
+  store:
     expire:
       in: 72
       timeUnit: HOURS
   open-weather:
+    host: api.openweathermap.org
+    port: 443
+    ssl: true
     api/mp-rest/url: https://api.openweathermap.org/data
     api/mp-rest/scope: javax.inject.Singleton
 
@@ -30,9 +33,9 @@ quarkus:
       cron: 0 0 * * * ?
     round:
       toUnit: HOURS
-    cache:
+    store:
       expire:
-        in: 1
+        in: 72
         timeUnit: HOURS
   quarkus:
     redis:

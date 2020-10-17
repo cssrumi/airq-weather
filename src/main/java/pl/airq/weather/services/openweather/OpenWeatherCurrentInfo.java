@@ -1,4 +1,4 @@
-package pl.airq.weather.infrastructure.services.openweather;
+package pl.airq.weather.services.openweather;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 

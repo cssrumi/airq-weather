@@ -1,4 +1,4 @@
-package pl.airq.weather.infrastructure.rest;
+package pl.airq.weather.route.dto;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import javax.validation.constraints.NotNull;

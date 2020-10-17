@@ -1,4 +1,4 @@
-package pl.airq.weather.infrastructure.rest;
+package pl.airq.weather.route;
 
 import io.quarkus.vertx.web.Body;
 import io.quarkus.vertx.web.Route;
@@ -7,11 +7,16 @@ import io.smallrye.mutiny.Uni;
 import io.vertx.core.http.HttpMethod;
 import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.airq.weather.domain.WeatherQuery;
+import pl.airq.weather.route.dto.WeatherInfoRequest;
+import pl.airq.weather.route.dto.WeatherInfoResponse;
 
-@RouteBase(path = "/v2/weather", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
+@RouteBase(path = "/v1/weather", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
 public class WeatherRoutes {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeatherRoutes.class);
     private final WeatherQuery weatherQuery;
 
     @Inject
@@ -21,6 +26,6 @@ public class WeatherRoutes {
 
     @Route(path = "/info", methods = HttpMethod.POST)
     Uni<WeatherInfoResponse> getWeatherInfo(@Body WeatherInfoRequest request) {
-        return weatherQuery.find(request).map(WeatherInfoResponse::new);
+        return weatherQuery.find(request).map(weatherInfo -> new WeatherInfoResponse(request.timestamp, weatherInfo));
     }
 }

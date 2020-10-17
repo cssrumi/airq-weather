@@ -1,23 +1,22 @@
-package pl.airq.weather.infrastructure.services.openweather;
+package pl.airq.weather.services.openweather;
 
 import io.smallrye.mutiny.Uni;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-import pl.airq.weather.domain.WeatherInfo;
 import pl.airq.weather.domain.CurrentWeatherService;
+import pl.airq.weather.domain.WeatherInfo;
 
 @ApplicationScoped
 class OpenWeatherService implements CurrentWeatherService {
 
     private final String apiKey;
-    private final OpenWeatherClient client;
+    private final OpenWeatherVertxClient client;
     private final OpenWeatherConverter converter;
 
     @Inject
     public OpenWeatherService(@ConfigProperty(name = "weather.open-weather.api-key") String apiKey,
-                              @RestClient OpenWeatherClient client) {
+                              OpenWeatherVertxClient client) {
         this.apiKey = apiKey;
         this.client = client;
         this.converter = new OpenWeatherConverter();
