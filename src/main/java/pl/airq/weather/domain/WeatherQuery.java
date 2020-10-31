@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import pl.airq.common.domain.exception.ResourceNotFoundException;
+import pl.airq.common.exception.ResourceNotFoundException;
 import pl.airq.common.store.Store;
 import pl.airq.common.store.key.TLKey;
 import pl.airq.common.vo.StationLocation;

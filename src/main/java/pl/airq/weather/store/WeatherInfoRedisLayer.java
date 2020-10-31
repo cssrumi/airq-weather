@@ -4,13 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-import com.google.common.collect.Streams;
 import io.quarkus.redis.client.reactive.ReactiveRedisClient;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.redis.client.Response;
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +19,8 @@ import java.util.stream.IntStream;
 import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.airq.common.domain.exception.DeserializationException;
-import pl.airq.common.domain.exception.SerializationException;
+import pl.airq.common.exception.DeserializationException;
+import pl.airq.common.exception.SerializationException;
 import pl.airq.common.process.AppEventBus;
 import pl.airq.common.process.MutinyUtils;
 import pl.airq.common.process.failure.FailureFactory;
@@ -38,12 +36,11 @@ public class WeatherInfoRedisLayer implements StoreLayer<TLKey, WeatherInfo> {
     private final ObjectMapper mapper;
     private final String expireInSeconds;
 
-    public WeatherInfoRedisLayer(ReactiveRedisClient reactiveRedisClient, AppEventBus bus, ObjectMapper mapper,
-                                 Long expireIn, ChronoUnit expireTimeUnit) {
+    public WeatherInfoRedisLayer(ReactiveRedisClient reactiveRedisClient, AppEventBus bus, ObjectMapper mapper, Duration expireIn) {
         this.reactiveRedisClient = reactiveRedisClient;
         this.bus = bus;
         this.mapper = mapper;
-        this.expireInSeconds = Long.toString(Duration.of(expireIn, expireTimeUnit).toSeconds());
+        this.expireInSeconds = Long.toString(expireIn.toSeconds());
     }
 
     @PostConstruct

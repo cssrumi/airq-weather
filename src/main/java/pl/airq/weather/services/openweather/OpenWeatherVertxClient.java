@@ -10,30 +10,24 @@ import io.vertx.mutiny.ext.web.client.WebClient;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.airq.weather.config.WeatherProperties;
 
 @ApplicationScoped
 public class OpenWeatherVertxClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenWeatherVertxClient.class);
-    private static final String OPEN_WEATHER_HOST_CONFIG = "weather.open-weather.host";
-    private static final String OPEN_WEATHER_PORT_CONFIG = "weather.open-weather.port";
-    private static final String OPEN_WEATHER_SSL_CONFIG = "weather.open-weather.ssl";
 
     private final ObjectMapper mapper;
     private final WebClient client;
 
     @Inject
-    OpenWeatherVertxClient(Vertx vertx, ObjectMapper mapper,
-                           @ConfigProperty(name = OPEN_WEATHER_HOST_CONFIG) String host,
-                           @ConfigProperty(name = OPEN_WEATHER_PORT_CONFIG, defaultValue = "443") Integer port,
-                           @ConfigProperty(name = OPEN_WEATHER_SSL_CONFIG, defaultValue = "true") Boolean ssl) {
+    OpenWeatherVertxClient(WeatherProperties properties, Vertx vertx, ObjectMapper mapper) {
         this.mapper = mapper;
-        this.client = WebClient.create(vertx, new WebClientOptions().setDefaultHost(host)
-                                                                    .setDefaultPort(port)
-                                                                    .setSsl(ssl)
+        this.client = WebClient.create(vertx, new WebClientOptions().setDefaultHost(properties.getOpenWeather().getHost())
+                                                                    .setDefaultPort(properties.getOpenWeather().getPort())
+                                                                    .setSsl(properties.getOpenWeather().getSsl())
                                                                     .setTrustAll(true));
     }
 

@@ -3,7 +3,7 @@ package pl.airq.weather.services.openweather;
 import io.smallrye.mutiny.Uni;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import pl.airq.weather.config.WeatherProperties;
 import pl.airq.weather.domain.CurrentWeatherService;
 import pl.airq.weather.domain.WeatherInfo;
 
@@ -15,9 +15,8 @@ class OpenWeatherService implements CurrentWeatherService {
     private final OpenWeatherConverter converter;
 
     @Inject
-    public OpenWeatherService(@ConfigProperty(name = "weather.open-weather.api-key") String apiKey,
-                              OpenWeatherVertxClient client) {
-        this.apiKey = apiKey;
+    public OpenWeatherService(WeatherProperties properties, OpenWeatherVertxClient client) {
+        this.apiKey = properties.getOpenWeather().getApiKey();
         this.client = client;
         this.converter = new OpenWeatherConverter();
     }

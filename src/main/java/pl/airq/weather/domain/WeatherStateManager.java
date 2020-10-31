@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import pl.airq.common.store.Store;
 import pl.airq.common.store.key.TLKey;
 import pl.airq.common.vo.StationLocation;
+import pl.airq.weather.config.WeatherProperties;
 import pl.airq.weather.store.StoreReady;
 
 @ApplicationScoped
@@ -35,14 +36,13 @@ public class WeatherStateManager {
     private final ExecutorService executor;
 
     @Inject
-    public WeatherStateManager(@ConfigProperty(name = "weather.round.toUnit") ChronoUnit roundToUnit,
+    public WeatherStateManager(WeatherProperties properties,
                                CurrentWeatherService weatherService,
                                Store<String, StationLocation> locationStore,
                                Store<TLKey, WeatherInfo> weatherStore) {
-        Preconditions.checkArgument(roundToUnit != null, "Round configuration is empty.");
-        Preconditions
-                .checkArgument(VALID_CHRONO_UNITS.contains(roundToUnit), "Round configuration is invalid. Allowed values: " + VALID_CHRONO_UNITS);
-        this.roundToUnit = roundToUnit;
+        Preconditions.checkArgument(VALID_CHRONO_UNITS.contains(properties.getRound().getToUnit()),
+                "Round configuration is invalid. Allowed values: " + VALID_CHRONO_UNITS);
+        this.roundToUnit = properties.getRound().getToUnit();
         this.weatherService = weatherService;
         this.locationStore = locationStore;
         this.weatherStore = weatherStore;
