@@ -24,6 +24,8 @@ quarkus:
       url: jdbc:postgresql://10.1.1.50:5432/warehouse
     reactive:
       url: postgresql://10.1.1.50:5432/warehouse
+  http:
+    cors: true
   vertx:
     prefer-native-transport: true
 
