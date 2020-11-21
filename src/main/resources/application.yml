@@ -2,11 +2,11 @@ weather:
   pull:
     cron: 0 0 * * * ?
   round:
-    toUnit: HOURS
+    to-unit: HOURS
   store:
     expire:
       in: 72
-      timeUnit: HOURS
+      time-unit: HOURS
   open-weather:
     host: api.openweathermap.org
     port: 443
@@ -30,13 +30,13 @@ quarkus:
 "%dev":
   weather:
     pull:
-      cron: 0 0 * * * ?
+      cron: 0 * * * * ?
     round:
-      toUnit: HOURS
+      to-unit: HOURS
     store:
       expire:
         in: 72
-        timeUnit: HOURS
+        time-unit: HOURS
   quarkus:
     redis:
       hosts: localhost:6379
