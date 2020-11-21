@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import pl.airq.common.config.properties.ExpireIn;
+import pl.airq.common.config.properties.RestService;
 
 @ConfigProperties(prefix = "weather")
 public class WeatherProperties {
@@ -18,7 +19,7 @@ public class WeatherProperties {
     private Round round;
 
     @NotNull
-    private RestService openWeather;
+    private WeatherProperties.OpenWeather openWeather;
 
     public Store getStore() {
         return store;
@@ -36,11 +37,11 @@ public class WeatherProperties {
         this.round = round;
     }
 
-    public RestService getOpenWeather() {
+    public OpenWeather getOpenWeather() {
         return openWeather;
     }
 
-    public void setOpenWeather(RestService openWeather) {
+    public void setOpenWeather(OpenWeather openWeather) {
         this.openWeather = openWeather;
     }
 
@@ -72,43 +73,10 @@ public class WeatherProperties {
         }
     }
 
-    public static class RestService {
-
-        @NotEmpty
-        private String host;
-
-        @Positive
-        private Integer port = 443;
-
-        @NotNull
-        private Boolean ssl = true;
+    public static class OpenWeather extends RestService {
 
         @Nullable
         private String apiKey;
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Boolean getSsl() {
-            return ssl;
-        }
-
-        public void setSsl(Boolean ssl) {
-            this.ssl = ssl;
-        }
 
         @Nullable
         public String getApiKey() {
