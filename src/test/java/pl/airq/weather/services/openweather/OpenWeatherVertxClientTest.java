@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import pl.airq.common.domain.station.StationQuery;
 import pl.airq.common.store.Store;
 import pl.airq.common.vo.StationLocation;
+import pl.airq.weather.domain.CurrentWeatherService;
 import pl.airq.weather.domain.WeatherStateManager;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -25,11 +26,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @QuarkusTest
 class OpenWeatherVertxClientTest {
 
-    private final String URI = "/data/2.5/weather";
+    private static final String URI = "/data/2.5/weather";
     private final WireMockServer server = OpenWeatherApiMockResource.server();
 
-    @InjectMock
-    OpenWeatherService openWeatherService;
     @InjectMock
     WeatherStateManager stateManager;
     @InjectMock

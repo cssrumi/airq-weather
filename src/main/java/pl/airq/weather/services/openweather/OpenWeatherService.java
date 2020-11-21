@@ -15,7 +15,7 @@ class OpenWeatherService implements CurrentWeatherService {
     private final OpenWeatherConverter converter;
 
     @Inject
-    public OpenWeatherService(WeatherProperties properties, OpenWeatherVertxClient client) {
+    OpenWeatherService(WeatherProperties properties, OpenWeatherVertxClient client) {
         this.apiKey = properties.getOpenWeather().getApiKey();
         this.client = client;
         this.converter = new OpenWeatherConverter();
