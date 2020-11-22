@@ -16,7 +16,6 @@ import pl.airq.weather.rest.dto.WeatherInfoResponse;
 @RouteBase(path = "/v1/weather", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
 public class WeatherRoutes {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WeatherRoutes.class);
     private final WeatherQuery weatherQuery;
 
     @Inject
