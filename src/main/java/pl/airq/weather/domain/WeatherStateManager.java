@@ -7,6 +7,8 @@ import io.smallrye.mutiny.Multi;
 import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -51,7 +53,13 @@ public class WeatherStateManager {
     void storeReady(@ObservesAsync StoreReady storeReady) {
         isStoreReady.set(true);
         LOGGER.info("{} handled. {} started...", storeReady.getClass().getSimpleName(), WeatherStateManager.class.getSimpleName());
-        if (weatherStore.getMap().await().atMost(Duration.ofSeconds(3)).size() == 0) {
+        invokeIfStoreEmpty();
+    }
+
+    void invokeIfStoreEmpty() {
+        Map<TLKey, WeatherInfo> state = weatherStore.getMap().await().atMost(Duration.ofSeconds(3));
+        if (state.size() == 0 || state.values().stream().noneMatch(Objects::nonNull)) {
+            LOGGER.info("Weather store is empty.");
             pullWeatherDataIntoStore();
         }
     }
