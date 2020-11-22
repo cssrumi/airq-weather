@@ -12,9 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-class JacksonConfig implements ObjectMapperCustomizer {
+class JacksonCustomizer implements ObjectMapperCustomizer {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JacksonConfig.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JacksonCustomizer.class);
 
     @Override
     public void customize(ObjectMapper objectMapper) {

@@ -51,6 +51,9 @@ public class WeatherStateManager {
     void storeReady(@ObservesAsync StoreReady storeReady) {
         isStoreReady.set(true);
         LOGGER.info("{} handled. {} started...", storeReady.getClass().getSimpleName(), WeatherStateManager.class.getSimpleName());
+        if (weatherStore.getMap().await().atMost(Duration.ofSeconds(3)).size() == 0) {
+            pullWeatherDataIntoStore();
+        }
     }
 
     @Scheduled(cron = "{weather.pull.cron}")
