@@ -29,7 +29,7 @@ public class StoreProvider {
     @Produces
     @ApplicationScoped
     Store<String, StationLocation> locationStore(StationQuery stationQuery) {
-        return new StoreBuilder<String, StationLocation>().withGuavaCacheOnTop(Duration.ofDays(1))
+        return new StoreBuilder<String, StationLocation>().withInMemoryOnTop()
                                                           .withFallback(new LocationFallbackLayer(stationQuery))
                                                           .build();
     }

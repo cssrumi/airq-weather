@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 import pl.airq.common.domain.station.StationQuery;
 import pl.airq.common.store.Store;
 import pl.airq.common.vo.StationLocation;
-import pl.airq.weather.domain.CurrentWeatherService;
 import pl.airq.weather.domain.WeatherStateManager;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
