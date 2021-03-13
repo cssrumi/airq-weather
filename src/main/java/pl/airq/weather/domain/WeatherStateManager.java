@@ -102,7 +102,7 @@ public class WeatherStateManager {
             case MINUTES:
                 now = now.minusSeconds(now.getSecond());
             case SECONDS:
-                return now;
+                return now.minusNanos(now.getNano());
             default:
                 throw new ConfigurationException("Invalid round configuration: " + roundToUnit);
         }
