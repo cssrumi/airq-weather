@@ -8,7 +8,7 @@
     <parent>
         <groupId>pl.airq</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>1.4</version>
+        <version>1.5-SNAPSHOT</version>
     </parent>
 
     <scm>
@@ -19,7 +19,7 @@
     </scm>
 
     <properties>
-        <common.version>1.14.2</common.version>
+        <common.version>1.15.0-SNAPSHOT</common.version>
         <wiremock.version>2.27.2</wiremock.version>
     </properties>
 

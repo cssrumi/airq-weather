@@ -1,17 +1,16 @@
-package pl.airq.weather.rest;
+package pl.airq.weather.infrastructure.rest;
 
 import io.quarkus.vertx.web.Body;
 import io.quarkus.vertx.web.Route;
 import io.quarkus.vertx.web.RouteBase;
 import io.smallrye.mutiny.Uni;
 import io.vertx.core.http.HttpMethod;
+import io.vertx.ext.web.RoutingContext;
 import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pl.airq.weather.domain.WeatherQuery;
-import pl.airq.weather.rest.dto.WeatherInfoRequest;
-import pl.airq.weather.rest.dto.WeatherInfoResponse;
+import pl.airq.weather.domain.dto.WeatherInfoRequest;
+import pl.airq.weather.domain.dto.WeatherInfoResponse;
 
 @RouteBase(path = "/v1/weather", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
 public class WeatherRoutes {
@@ -26,5 +25,10 @@ public class WeatherRoutes {
     @Route(path = "/info", methods = HttpMethod.POST)
     Uni<WeatherInfoResponse> getWeatherInfo(@Body WeatherInfoRequest request) {
         return weatherQuery.find(request).map(weatherInfo -> new WeatherInfoResponse(request.timestamp, weatherInfo));
+    }
+
+    @Route(path = "/test", methods = HttpMethod.GET, consumes = MediaType.WILDCARD)
+    void throwRuntimeEx(RoutingContext context) {
+        context.fail(new RuntimeException("MY EX"));
     }
 }

@@ -1,8 +1,7 @@
-package pl.airq.weather.store;
+package pl.airq.weather.infrastructure.store;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.redis.client.reactive.ReactiveRedisClient;
-import java.time.Duration;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;

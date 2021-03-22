@@ -22,7 +22,7 @@ import pl.airq.common.store.Store;
 import pl.airq.common.store.key.TLKey;
 import pl.airq.common.vo.StationLocation;
 import pl.airq.weather.config.WeatherProperties;
-import pl.airq.weather.store.StoreReady;
+import pl.airq.weather.infrastructure.store.StoreReady;
 
 @ApplicationScoped
 public class WeatherStateManager {

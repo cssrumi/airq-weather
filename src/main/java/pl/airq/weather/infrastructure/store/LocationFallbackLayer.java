@@ -1,4 +1,4 @@
-package pl.airq.weather.store;
+package pl.airq.weather.infrastructure.store;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;

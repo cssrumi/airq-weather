@@ -1,4 +1,4 @@
-package pl.airq.weather.services.openweather;
+package pl.airq.weather.infrastructure.services.openweather;
 
 import io.smallrye.mutiny.Uni;
 import javax.enterprise.context.ApplicationScoped;

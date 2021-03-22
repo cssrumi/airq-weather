@@ -1,4 +1,4 @@
-package pl.airq.weather.services.openweather;
+package pl.airq.weather.infrastructure.services.openweather;
 
 import java.util.Optional;
 import pl.airq.weather.domain.WeatherConverter;

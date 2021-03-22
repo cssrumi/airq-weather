@@ -1,4 +1,4 @@
-package pl.airq.weather.store;
+package pl.airq.weather.infrastructure.store;
 
 import com.google.common.collect.Collections2;
 import io.quarkus.runtime.StartupEvent;

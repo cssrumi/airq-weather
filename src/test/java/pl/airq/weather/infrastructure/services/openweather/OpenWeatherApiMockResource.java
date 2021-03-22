@@ -1,4 +1,4 @@
-package pl.airq.weather.services.openweather;
+package pl.airq.weather.infrastructure.services.openweather;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.common.ConsoleNotifier;

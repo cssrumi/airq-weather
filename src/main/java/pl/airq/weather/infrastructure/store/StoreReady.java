@@ -1,4 +1,4 @@
-package pl.airq.weather.store;
+package pl.airq.weather.infrastructure.store;
 
 public class StoreReady {
     public StoreReady() {

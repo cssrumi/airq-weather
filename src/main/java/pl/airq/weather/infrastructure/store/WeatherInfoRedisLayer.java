@@ -1,4 +1,4 @@
-package pl.airq.weather.store;
+package pl.airq.weather.infrastructure.store;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
