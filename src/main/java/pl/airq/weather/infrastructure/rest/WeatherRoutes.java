@@ -5,7 +5,6 @@ import io.quarkus.vertx.web.Route;
 import io.quarkus.vertx.web.RouteBase;
 import io.smallrye.mutiny.Uni;
 import io.vertx.core.http.HttpMethod;
-import io.vertx.ext.web.RoutingContext;
 import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
 import pl.airq.weather.domain.WeatherQuery;
@@ -27,8 +26,4 @@ public class WeatherRoutes {
         return weatherQuery.find(request).map(weatherInfo -> new WeatherInfoResponse(request.timestamp, weatherInfo));
     }
 
-    @Route(path = "/test", methods = HttpMethod.GET, consumes = MediaType.WILDCARD)
-    void throwRuntimeEx(RoutingContext context) {
-        context.fail(new RuntimeException("MY EX"));
-    }
 }

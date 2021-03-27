@@ -8,7 +8,7 @@
     <parent>
         <groupId>pl.airq</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>1.5-SNAPSHOT</version>
+        <version>1.5</version>
     </parent>
 
     <scm>
@@ -19,7 +19,7 @@
     </scm>
 
     <properties>
-        <common.version>1.15.0-SNAPSHOT</common.version>
+        <common.version>1.15.0</common.version>
         <wiremock.version>2.27.2</wiremock.version>
     </properties>
 
@@ -56,11 +56,6 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-redis-client</artifactId>
         </dependency>
-<!--        &lt;!&ndash;vertx&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.vertx</groupId>-->
-<!--            <artifactId>vertx-circuit-breaker</artifactId>-->
-<!--        </dependency>-->
         <!--test-->
         <dependency>
             <groupId>io.quarkus</groupId>

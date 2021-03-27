@@ -6,9 +6,9 @@ import java.util.Collections;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;
 import org.mockito.Mockito;
-import pl.airq.common.store.Store;
-import pl.airq.common.store.key.TLKey;
-import pl.airq.common.vo.StationLocation;
+import pl.airq.common.infrastructure.store.Store;
+import pl.airq.common.infrastructure.store.key.TLKey;
+import pl.airq.common.domain.vo.StationLocation;
 import pl.airq.weather.domain.WeatherInfo;
 
 import static org.mockito.Mockito.when;

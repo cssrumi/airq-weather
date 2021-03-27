@@ -18,9 +18,9 @@ import javax.enterprise.event.ObservesAsync;
 import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.airq.common.store.Store;
-import pl.airq.common.store.key.TLKey;
-import pl.airq.common.vo.StationLocation;
+import pl.airq.common.infrastructure.store.Store;
+import pl.airq.common.infrastructure.store.key.TLKey;
+import pl.airq.common.domain.vo.StationLocation;
 import pl.airq.weather.config.WeatherProperties;
 import pl.airq.weather.infrastructure.store.StoreReady;
 

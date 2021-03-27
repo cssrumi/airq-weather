@@ -7,9 +7,9 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import pl.airq.common.domain.station.StationQuery;
-import pl.airq.common.store.layer.FallbackLayer;
-import pl.airq.common.vo.StationId;
-import pl.airq.common.vo.StationLocation;
+import pl.airq.common.infrastructure.store.layer.FallbackLayer;
+import pl.airq.common.domain.vo.StationId;
+import pl.airq.common.domain.vo.StationLocation;
 
 class LocationFallbackLayer extends FallbackLayer<String, StationLocation> {
 

@@ -24,8 +24,8 @@ import pl.airq.common.exception.SerializationException;
 import pl.airq.common.process.AppEventBus;
 import pl.airq.common.process.MutinyUtils;
 import pl.airq.common.process.failure.FailureFactory;
-import pl.airq.common.store.key.TLKey;
-import pl.airq.common.store.layer.StoreLayer;
+import pl.airq.common.infrastructure.store.key.TLKey;
+import pl.airq.common.infrastructure.store.layer.StoreLayer;
 import pl.airq.weather.domain.WeatherInfo;
 
 public class WeatherInfoRedisLayer implements StoreLayer<TLKey, WeatherInfo> {
