@@ -8,7 +8,7 @@
     <parent>
         <groupId>pl.airq</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>1.5</version>
+        <version>1.5.1</version>
     </parent>
 
     <scm>
@@ -19,7 +19,7 @@
     </scm>
 
     <properties>
-        <common.version>1.15.0</common.version>
+        <common.version>1.15.1</common.version>
         <wiremock.version>2.27.2</wiremock.version>
     </properties>
 
@@ -55,6 +55,10 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-redis-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
         <!--test-->
         <dependency>
